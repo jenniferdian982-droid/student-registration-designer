@@ -1,0 +1,231 @@
+is_package: true
+container:
+  type: ColumnPanel
+  properties:
+    col_widths: '{}'
+  event_bindings:
+    show: form_show
+components:
+- type: Label
+  name: title_label
+  properties:
+    text: Secure Student Registration System
+    bold: true
+    font_size: 22
+  layout_properties:
+    grid_position: MMDPUM,BGCGOF
+- type: Label
+  name: user_label
+  properties:
+    text: Not logged in
+    italic: true
+  layout_properties:
+    grid_position: DKTBDA,SERDLT
+- type: Label
+  name: status_label
+  properties:
+    text: Please log in to continue.
+    bold: true
+  layout_properties:
+    grid_position: ACGTME,UILTLP
+- type: Button
+  name: login_button
+  properties:
+    text: Log In
+    icon: fa:sign-in
+  event_bindings:
+    click: login_button_click
+  layout_properties:
+    grid_position: DDPOPP,JCEDXK
+- type: Button
+  name: logout_button
+  properties:
+    text: Log Out
+    icon: fa:sign-out
+    visible: false
+  event_bindings:
+    click: logout_button_click
+  layout_properties:
+    grid_position: XIPWFQ,AGQLEW
+- type: ColumnPanel
+  name: app_panel
+  properties:
+    visible: false
+    col_widths: '{}'
+  layout_properties:
+    grid_position: RAYQJU,CWIQLF
+  components:
+  - type: Label
+    name: section_register_label
+    properties:
+      text: Register a Student
+      bold: true
+    layout_properties:
+      grid_position: KEMUBC,RDLSBQ
+  - type: Label
+    name: student_id_label
+    properties:
+      text: Student ID
+    layout_properties:
+      grid_position: GBCNNC,HCRNBS
+      col_xs: 0
+      width_xs: 3
+  - type: TextBox
+    name: student_id_box
+    properties:
+      placeholder: e.g. 2024-0001
+    layout_properties:
+      grid_position: DHUUSB,SSMBHB
+      col_xs: 3
+      width_xs: 9
+  - type: Label
+    name: name_label
+    properties:
+      text: Full name
+    layout_properties:
+      grid_position: REJNER,DSJRVF
+      col_xs: 0
+      width_xs: 3
+  - type: TextBox
+    name: name_box
+    properties:
+      placeholder: Juan Dela Cruz
+    layout_properties:
+      grid_position: DSSUGL,DRWCSB
+      col_xs: 3
+      width_xs: 9
+  - type: Label
+    name: course_label
+    properties:
+      text: Course
+    layout_properties:
+      grid_position: TGPVRN,YKOSOL
+      col_xs: 0
+      width_xs: 3
+  - type: DropDown
+    name: course_dropdown
+    properties:
+      items:
+      - BSIT
+      - BSCS
+      - BSIS
+      include_placeholder: true
+      placeholder: Select course
+    layout_properties:
+      grid_position: JHZFWY,HCSJQP
+      col_xs: 3
+      width_xs: 9
+  - type: Label
+    name: year_label
+    properties:
+      text: Year level
+    layout_properties:
+      grid_position: KXOJTC,DQNFYK
+      col_xs: 0
+      width_xs: 3
+  - type: DropDown
+    name: year_dropdown
+    properties:
+      items:
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      include_placeholder: true
+      placeholder: Select year level
+    layout_properties:
+      grid_position: EPNBVC,YRSZKK
+      col_xs: 3
+      width_xs: 9
+  - type: Button
+    name: register_button
+    properties:
+      text: Register Student
+      icon: fa:user-plus
+    event_bindings:
+      click: register_button_click
+    layout_properties:
+      grid_position: WLTPSZ,OCCIPW
+      col_xs: 3
+      width_xs: 9
+  - type: Label
+    name: section_records_label
+    properties:
+      text: Registrations
+      bold: true
+    layout_properties:
+      grid_position: VCBXWJ,USVOJW
+  - type: Button
+    name: view_button
+    properties:
+      text: View Records
+      icon: fa:list
+    event_bindings:
+      click: view_button_click
+    layout_properties:
+      grid_position: MVLAOL,FTDPBG
+      col_xs: 3
+      width_xs: 9
+  - type: DataGrid
+    name: records_area
+    properties:
+      columns:
+      - id: COLSID
+        title: Student ID
+        data_key: student_id
+      - id: COLNAM
+        title: Name
+        data_key: name
+      - id: COLCRS
+        title: Course
+        data_key: course
+      - id: COLYRL
+        title: Year Level
+        data_key: year_level
+      rows_per_page: 10
+      show_page_controls: true
+      auto_header: true
+    layout_properties:
+      grid_position: YJEXHM,MPCFOM
+    components:
+    - type: RepeatingPanel
+      name: records_panel
+      properties:
+        spacing_above: none
+        spacing_below: none
+        item_template: RowTemplate
+      layout_properties: {}
+  - type: Label
+    name: section_delete_label
+    properties:
+      text: Delete a Registration (Admin only)
+      bold: true
+    layout_properties:
+      grid_position: RIENRI,WNLVMH
+  - type: Label
+    name: delete_id_label
+    properties:
+      text: Student ID
+    layout_properties:
+      grid_position: ECFEHV,HAPSFI
+      col_xs: 0
+      width_xs: 3
+  - type: TextBox
+    name: delete_id_box
+    properties:
+      placeholder: Student ID to delete
+    layout_properties:
+      grid_position: JAENRL,TSKEWQ
+      col_xs: 3
+      width_xs: 9
+  - type: Button
+    name: delete_button
+    properties:
+      text: Delete Registration
+      icon: fa:trash
+    event_bindings:
+      click: delete_button_click
+    layout_properties:
+      grid_position: TUVXBO,YVZRMM
+      col_xs: 3
+      width_xs: 9
